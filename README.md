@@ -29,3 +29,25 @@ private val viewModel: MyViewModel by activityViewModelBuilder {
 ## :package:  Install
 
 [Click here for packages + import instructions](https://github.com/robotsquidward/lazyviewmodels/packages).
+
+## :mailbox_with_mail: Contact
+
+This project is solely maintained by [AJ](https://ajkueterman.dev) ([robotsquidward](https://robotsquidward.com)).
+
+If you need to raise an issue or question about this library, please create an issue and tag it with a relevant label.
+
+## :pencil2: Contributing
+
+To get started, please fork the repo and checkout a new branch. You can then build the library code locally with the Gradle wrapper
+
+```
+./gradlew :lazyviewmodels:build
+```
+
+The library code is in the [/lazyviewmodels](/lazyviewmodels) directory. Feel free to commit code to the `:app` wrapper application to support changes to the library.
+
+See more in [CONTRIBUTING](CONTRIBUTING.md)
+
+## :balance_scale: License
+
+This library is licensed under the [MIT License](LICENSE)
