@@ -1,0 +1,3 @@
+include ':lazyviewmodels'
+include ':app'
+rootProject.name = "TestHarness"
