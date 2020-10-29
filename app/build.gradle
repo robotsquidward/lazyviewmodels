@@ -40,7 +40,10 @@ dependencies {
     implementation 'com.google.android.material:material:1.2.1'
     
     // Test pull of library from GitHub Packages
-    implementation 'dev.ajkueterman:lazyviewmodels:0.0.2'
+    //implementation 'dev.ajkueterman:lazyviewmodels:0.0.3'
+
+    // Pull directly from local library for test harness development
+    implementation project(":lazyviewmodels")
     
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

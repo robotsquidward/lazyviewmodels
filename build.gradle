@@ -22,6 +22,14 @@ allprojects {
         google()
         jcenter()
         mavenCentral()
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/robotsquidward/lazyviewmodels")
+            credentials {
+                username = 'your username'
+                password = 'your personal access token'
+            }
+        }
     }
 }
 

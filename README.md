@@ -28,7 +28,28 @@ private val viewModel: MyViewModel by activityViewModelBuilder {
 
 ## :package:  Install
 
-[Click here for packages + import instructions](https://github.com/robotsquidward/lazyviewmodels/packages).
+Packages are hosted in GitHub Packages. [Click here for Lazy ViewModels packages](https://github.com/robotsquidward/lazyviewmodels/packages).
+
+GitHub Packages requires you to [authenticate to GitHub to install packages](https://docs.github.com/en/free-pro-team@latest/packages/using-github-packages-with-your-projects-ecosystem/configuring-gradle-for-use-with-github-packages#authenticating-to-github-packages). You can see an example setting up auth for this repo in the root [build.gradle](build.gradle).  In your `allProjects.repositories` block
+
+```groovy
+maven {
+    name = "GitHubPackages"
+    url = uri("https://maven.pkg.github.com/robotsquidward/lazyviewmodels")
+    credentials {
+        username = 'your username'
+        password = 'your personal access token'
+    }
+}
+```
+
+Generate a [personal access token](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token) with the permission for Reading from GitHub Packages and include it with your GitHub username. Then, include the dependency as normal
+
+```groovy
+dependencies {
+    implementation 'dev.ajkueterman:lazyviewmodels:<version>'
+}
+```
 
 ## :mailbox_with_mail: Contact
 
