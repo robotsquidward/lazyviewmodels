@@ -8,6 +8,8 @@ Convenient extensions built on top of the Android ViewModel Extensions library t
 
 These extensions create an Android ViewModel scoped to an Activity. 
 
+### Basic Usage
+
 When in an Activity (`ComponentActivity`):
 
 ```kotlin
@@ -24,7 +26,9 @@ private val viewModel: MyViewModel by lazyActivityViewModels {
 }
 ```
 
-To create a ViewModel that utilizes `SavedStateHandle` via the constructor, use the Saved State versions of these extensions.
+# SavedStateHandle
+
+To create a ViewModel that utilizes [`SavedStateHandle`](https://developer.android.com/reference/androidx/lifecycle/SavedStateHandle) via the constructor, use the Saved State versions of these extensions.
 
 When in an Activity (`ComponentActivity`):
 
@@ -48,7 +52,7 @@ private val viewModel: MyViewModel by lazySavedStateActivityViewModels { handle:
 }
 ```
 
-Additionally, if you prefer to customize the `SavedStateRegistryOwner` that provides your `SavedStateHandle`, you can pass one in:
+Additionally, if you prefer to customize the [`SavedStateRegistryOwner`](https://developer.android.com/reference/androidx/savedstate/SavedStateRegistryOwner) that provides your `SavedStateHandle`, you can pass one in:
 
 ```kotlin
 private val viewModel: MyViewModel by lazySavedStateActivityViewModels(this.requireActivity()) { handle: SavedStateHandle ->
