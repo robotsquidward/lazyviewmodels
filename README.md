@@ -26,7 +26,7 @@ private val viewModel: MyViewModel by lazyActivityViewModels {
 }
 ```
 
-# SavedStateHandle
+### SavedStateHandle
 
 To create a ViewModel that utilizes [`SavedStateHandle`](https://developer.android.com/reference/androidx/lifecycle/SavedStateHandle) via the constructor, use the Saved State versions of these extensions.
 
