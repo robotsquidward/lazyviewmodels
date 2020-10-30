@@ -12,7 +12,8 @@ android {
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 30
-        versionName "0.0.4"
+        versionName "0.1.0"
+        archivesBaseName = "${archivesBaseName}-${versionName}"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -59,6 +60,7 @@ dependencies {
 
     // View Model extensions
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:2.2.0"
 
     testImplementation "junit:junit:4.13.1"
 
