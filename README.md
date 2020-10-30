@@ -6,12 +6,14 @@ Convenient extensions built on top of the Android ViewModel Extensions library t
 
 ## :hammer_and_wrench:  Usage
 
-These extensions create an Android `ViewModel` scoped to an Activity. 
+These extensions create an Android ViewModel scoped to an Activity. 
+
+### Basic Usage
 
 When in an Activity (`ComponentActivity`):
 
 ```kotlin
-private val viewModel: MyViewModel by viewModelBuilder {
+private val viewModel: MyViewModel by lazyViewModels {
     MyViewModel(repo = MyRepository())  
 }
 ```
@@ -19,8 +21,45 @@ private val viewModel: MyViewModel by viewModelBuilder {
 When in a Fragment, create an Activity-scoped ViewModel with:
 
 ```kotlin
-private val viewModel: MyViewModel by activityViewModelBuilder {
+private val viewModel: MyViewModel by lazyActivityViewModels {
     MyViewModel(repo = MyRepository())  
+}
+```
+
+### SavedStateHandle
+
+To create a ViewModel that utilizes [`SavedStateHandle`](https://developer.android.com/reference/androidx/lifecycle/SavedStateHandle) via the constructor, use the Saved State versions of these extensions.
+
+When in an Activity (`ComponentActivity`):
+
+```kotlin
+private val viewModel: MyViewModel by lazySavedStateViewModels { handle: SavedStateHandle ->
+    MyViewModel(
+        repo = MyRepository(),
+        savedStateHandle = handle
+    )
+}
+```
+
+When in a Fragment, create an Activity-scoped View Model with: 
+
+```kotlin
+private val viewModel: MyViewModel by lazySavedStateActivityViewModels { handle: SavedStateHandle ->
+    MyViewModel(
+        repo = MyRepository(),
+        savedStateHandle = handle
+    )
+}
+```
+
+Additionally, if you prefer to customize the [`SavedStateRegistryOwner`](https://developer.android.com/reference/androidx/savedstate/SavedStateRegistryOwner) that provides your `SavedStateHandle`, you can pass one in:
+
+```kotlin
+private val viewModel: MyViewModel by lazySavedStateActivityViewModels(this.requireActivity()) { handle: SavedStateHandle ->
+    MyViewModel(
+        repo = MyRepository(),
+        savedStateHandle = handle
+    )
 }
 ```
 
