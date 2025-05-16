@@ -4,14 +4,17 @@ import androidx.fragment.app.Fragment
 import dev.ajkueterman.lazyviewmodels.lazyActivityViewModels
 import dev.ajkueterman.lazyviewmodels.lazySavedStateActivityViewModels
 
-class MainFragment: Fragment() {
+@Suppress("unused")// MainFragment is used as an example
+class MainFragment : Fragment() {
 
     private val viewModel: MainViewModel by lazyActivityViewModels {
         MainViewModel("dep")
     }
 
     private val savedStateViewModel: SavedStateViewModel by lazySavedStateActivityViewModels { savedStateHandle ->
-        SavedStateViewModel(savedStateHandle = savedStateHandle)
+        SavedStateViewModel(
+            savedStateHandle = savedStateHandle,
+            dependency = "saved state dep",
+        )
     }
-
 }

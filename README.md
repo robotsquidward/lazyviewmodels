@@ -69,7 +69,7 @@ private val viewModel: MyViewModel by lazySavedStateActivityViewModels(this.requ
 
 Packages are hosted in GitHub Packages. [Click here for Lazy ViewModels packages](https://github.com/robotsquidward/lazyviewmodels/packages).
 
-GitHub Packages requires you to [authenticate to GitHub to install packages](https://docs.github.com/en/free-pro-team@latest/packages/using-github-packages-with-your-projects-ecosystem/configuring-gradle-for-use-with-github-packages#authenticating-to-github-packages). You can see an example setting up auth for this repo in the root [build.gradle](build.gradle).  In your `allProjects.repositories` block
+GitHub Packages requires you to [authenticate to GitHub to install packages](https://docs.github.com/en/free-pro-team@latest/packages/using-github-packages-with-your-projects-ecosystem/configuring-gradle-for-use-with-github-packages#authenticating-to-github-packages). You can see an example setting up auth for this repo in the root [build.gradle](build.gradle.kts).  In your `allProjects.repositories` block
 
 ```groovy
 maven {

@@ -1,9 +1,12 @@
 package dev.ajkueterman.lazyviewmodels
 
+import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.annotation.MainThread
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.*
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.savedstate.SavedStateRegistryOwner
 
 /**
@@ -26,7 +29,7 @@ inline fun <reified VM : ViewModel> Fragment.lazyActivityViewModels(
         storeProducer = { requireActivity().viewModelStore },
         factoryProducer = {
             object : ViewModelProvider.Factory {
-                override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+                override fun <T : ViewModel> create(modelClass: Class<T>): T {
                     @Suppress("UNCHECKED_CAST")// Casting T as ViewModel
                     return viewModelInitializer() as T
                 }
@@ -43,8 +46,8 @@ inline fun <reified VM : ViewModel> Fragment.lazyActivityViewModels(
  * Like `by activityViewModels()`, this extension creates a [ViewModel] scoped to the parent
  * [ComponentActivity].
  *
- * @param owner the [SavedStateRegistryOwner] used to provide the [SavedStateHandle], defaults
- * to this [Fragment]
+ * @param owner the [SavedStateRegistryOwner] for this [ViewModel], typically a Fragment or Activity.
+ * @param defaultArgs the default arguments to pass to the [SavedStateHandle].
  * @param viewModelInitializer the lambda which returns your custom class [VM] of type [ViewModel]
  *
  * @return a [VM] class instantiated by [Lazy], scoped to the Activity
@@ -52,15 +55,16 @@ inline fun <reified VM : ViewModel> Fragment.lazyActivityViewModels(
 @MainThread
 inline fun <reified VM : ViewModel> Fragment.lazySavedStateActivityViewModels(
     owner: SavedStateRegistryOwner = this,
+    defaultArgs: Bundle? = null,
     noinline viewModelInitializer: (SavedStateHandle) -> VM
 ): Lazy<VM> =
     ViewModelLazy(
         viewModelClass = VM::class,
         storeProducer = { requireActivity().viewModelStore },
         factoryProducer = {
-            return@ViewModelLazy object : AbstractSavedStateViewModelFactory(owner, null) {
+            return@ViewModelLazy object : AbstractSavedStateViewModelFactory(owner, defaultArgs) {
                 @Suppress("UNCHECKED_CAST")// Casting T as ViewModel
-                override fun <T : ViewModel?> create(
+                override fun <T : ViewModel> create(
                     key: String,
                     modelClass: Class<T>,
                     handle: SavedStateHandle

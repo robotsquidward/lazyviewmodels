@@ -1,17 +1,19 @@
 package dev.ajkueterman.testharness
 
-import androidx.appcompat.app.AppCompatActivity
+import androidx.activity.ComponentActivity
 import dev.ajkueterman.lazyviewmodels.lazySavedStateViewModels
 import dev.ajkueterman.lazyviewmodels.lazyViewModels
 
-class MainActivity: AppCompatActivity() {
-
+@Suppress("unused")// MainActivity is used as an example
+class MainActivity : ComponentActivity() {
     private val viewModel: MainViewModel by lazyViewModels {
         MainViewModel("dep")
     }
 
     private val savedStateViewModel: SavedStateViewModel by lazySavedStateViewModels { savedStateHandle ->
-        SavedStateViewModel(savedStateHandle = savedStateHandle)
+        SavedStateViewModel(
+            savedStateHandle = savedStateHandle,
+            dependency = "saved state dep",
+        )
     }
-
 }

@@ -2,4 +2,7 @@ package dev.ajkueterman.testharness
 
 import androidx.lifecycle.ViewModel
 
-class MainViewModel(private val dependency: String): ViewModel()
+@Suppress("unused")// MainViewModel is used as an example
+class MainViewModel(
+    val dependency: String
+) : ViewModel()
